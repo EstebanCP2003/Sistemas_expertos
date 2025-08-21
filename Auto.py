@@ -6,7 +6,6 @@ class ReglaDiagnostico:
 
 class MotorInferenciaAuto:
     def __init__(self):
-        # Base de conocimiento: reglas iniciales
         self.base_conocimiento = [
             ReglaDiagnostico(["falla encendido", "tablero sin luz"], "Posible causa: batería descargada"),
             ReglaDiagnostico(["falla encendido", "tablero con luz"], "Posible causa: fallo en el motor de arranque"),
@@ -16,9 +15,6 @@ class MotorInferenciaAuto:
         ]
 
     def evaluar(self, hechos):
-        """
-        Recibe una lista de hechos (síntomas) y determina qué regla coincide.
-        """
         for regla in self.base_conocimiento:
             if all(cond in hechos for cond in regla.condiciones):
                 return regla.resultado
